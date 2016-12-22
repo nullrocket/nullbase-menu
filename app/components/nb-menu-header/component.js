@@ -1,0 +1,1 @@
+export { default } from 'nullbase-menu/components/nb-menu-header/component';

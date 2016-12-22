@@ -1,0 +1,21 @@
+{{#nb-scroll-panel
+scrollingX=false
+scrollingY= true
+animating=true
+bouncing  = true
+locking = false
+
+}}
+    <div class="content-wrapper elevation-1dp" style="margin:24px;background:white;padding:24px;">
+        <h2>Examples</h2>
+        <div >
+            <input tabindex="0" value ="bob">
+        </div>
+      <div style="text-align:right;">
+          {{nb-menu-button  icon=(build-icon "volume" "grey") type="flat-icon" text="show dialog" }}
+     {{nb-button id="tether-me" type="flat-text" text="show dialog" on-tap=(route-action "showDialog")}}
+
+        </div>
+    </div>
+
+{{/nb-scroll-panel}}
