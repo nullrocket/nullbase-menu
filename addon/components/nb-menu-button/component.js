@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import getOwner from 'ember-getowner-polyfill';
+
 import NbButton from 'nullbase-button/components/nb-button/component';
 import _ from "npm:lodash";
 export default NbButton.extend({
