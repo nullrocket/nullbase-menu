@@ -1,6 +1,6 @@
 {
   "name": "nullbase-menu",
-  "version": "0.0.2-alpha",
+  "version": "0.0.3-alpha",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -57,9 +57,9 @@
     "ember-spread": "0.0.6",
     "focus-trap": "^2.1.0",
     "lodash": "^4.16.3",
-    "nullbase-button": "https://github.com/nullrocket/nullbase-button.git#0.0.1-alpha",
+    "nullbase-button": "https://github.com/nullrocket/nullbase-button.git#0.0.2-alpha",
     "nullbase-gestures": "https://github.com/nullrocket/nullbase-gestures.git#0.0.0-alpha",
-    "nullbase-theme-service": "https://github.com/nullrocket/nullbase-theme-service.git#0.0.2-alpha"
+    "nullbase-theme-service": "https://github.com/nullrocket/nullbase-theme-service.git#0.0.3-alpha"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
