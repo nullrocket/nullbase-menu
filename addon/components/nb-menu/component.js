@@ -61,15 +61,16 @@ export default Ember.Component.extend({
                     target: self.get('tether'),
                     attachment: 'top ' + side,
                     targetAttachment: 'top ' + side,
-                    //    offset: side ==="right" ? "0 "+width+"px" :"0 0",
+                  //  offset: side ==="right" ? "0 "+20+"px" :"0 0",
                     optimizations: {
 
-                        gpu: false
+                        gpu: true
                     },
                   constraints: [
                     {
                       to: 'scrollParent',
-                      attachment: 'both'
+                      attachment: 'both',
+                      pin:true
                     }
                   ]
                 });

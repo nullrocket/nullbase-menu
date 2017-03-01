@@ -1,6 +1,6 @@
 {
   "name": "nullbase-menu",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -18,10 +18,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "async": "^2.1.4",
     "broccoli-asset-rev": "^2.4.2",
-    "ember-browserify": "^1.1.13",
     "ember-ajax": "^2.0.1",
     "ember-array-helper": "1.0.0",
+    "ember-browserify": "^1.1.13",
     "ember-cli": "2.6.3",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-dependency-checker": "^1.2.0",
@@ -42,8 +43,8 @@
     "nullbase-basic-layout": "https://github.com/nullrocket/nullbase-basic-layout.git#0.0.0-alpha",
     "nullbase-checkbox": "https://github.com/nullrocket/nullbase-checkbox.git#0.0.0-alpha",
     "nullbase-input": "https://github.com/nullrocket/nullbase-input.git#0.0.0-alpha",
-    "nullbase-scroll-panel": "https://github.com/nullrocket/nullbase-scroll-panel.git#0.0.0.alpha",
-    "async": "^2.1.4"
+    "nullbase-scroll-panel": "https://github.com/nullrocket/nullbase-scroll-panel.git#0.0.0-alpha",
+    "require-reload": "^0.2.2"
   },
   "keywords": [
     "ember-addon"
