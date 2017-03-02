@@ -22,6 +22,9 @@ export default NbButton.extend({
 
 
     }
+  },
+  willDestroyElement(){
+    this.get('menuManager.actionHandler').send('remove', this.get('menu'), mergedArgs);
   }
 
 });
