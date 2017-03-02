@@ -1,6 +1,7 @@
 {
   "name": "nullbase-menu",
   "version": "0.0.7-alpha",
+
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
