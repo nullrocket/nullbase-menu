@@ -71,10 +71,10 @@ export default Ember.Component.extend(InboundAction, {
             var type = _.isUndefined(args) ? "not-set" : _.has(args, "type") ? args.type : 'not-set';
 
             this.get('menus').pushObject({ name: menuComponent, menuID: uniqId, tether: args.tether, type: type, args: args });
-
+            let menu = null;
 
             Ember.run.scheduleOnce('afterRender', function () {
-                var menu = _.find(self.get('menuInstances'), function ( menu ) {
+                 menu = _.find(self.get('menuInstances'), function ( menu ) {
 
                     return menu.get('menuID') === uniqId;
                 });
@@ -86,7 +86,7 @@ export default Ember.Component.extend(InboundAction, {
 
                 }
             });
-
+            return menu;
         }
     }
 
