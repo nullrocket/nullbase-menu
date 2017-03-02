@@ -4,7 +4,7 @@ import NbButton from 'nullbase-button/components/nb-button/component';
 import _ from "npm:lodash";
 export default NbButton.extend({
   menu:'',
-  menuObject:null,
+
   actions:{
     tap(){
 
@@ -16,8 +16,8 @@ export default NbButton.extend({
             );
             //    self.get('dialogManager.actionHandler').send('show', dialogComponent, context);
 
-          var menuObject=  self.get('menuManager.actionHandler').send('show', this.get('menu'), mergedArgs);
-          self.set('menuObject',menuObject);
+       self.get('menuManager.actionHandler').send('show', this.get('menu'), mergedArgs);
+
         });
 
 
@@ -26,7 +26,7 @@ export default NbButton.extend({
     }
   },
   willDestroyElement(){
-    this.get('menuManager.actionHandler').send('remove', this.get('menuObject'));
+    this.get('menuManager.actionHandler').send('removeByTether', this.get('element'));
   }
 
 });
