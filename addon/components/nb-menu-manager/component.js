@@ -62,19 +62,7 @@ export default Ember.Component.extend(InboundAction, {
             this.get('menus').removeObject(menuToRemove);
 
         },
-        /*
-         removeByType: function ( type ) {
 
-         //this.get('reduxStore').dispatch({ type: 'ALLOW_TRANSITIONS' });
-         var dialogToRemove = _.find(this.get('dialogs.content'), function ( dialog ) {
-         // console.log('removeByType',dialog.type, type);
-         return dialog.type === type;
-         });
-
-         this.get('dialogs').removeObject(dialogToRemove);
-
-         },
-         */
         show: function ( menuComponent, args ) {
 
             // this.get('reduxStore').dispatch({type:'BLOCK_TRANSITIONS'});

@@ -86,7 +86,7 @@ export default Ember.Component.extend({
         {
           $(':tabbable.item:last',$(this).parent().get(0)).focus();
         }
-        //console.log(document.activeElement);
+
 
       }
       // down arrow
@@ -99,7 +99,7 @@ export default Ember.Component.extend({
         {
           $(':tabbable.item:first',$(this).parent().get(0)).focus();
         }
-        //console.log(document.activeElement);
+
       }
 
 
