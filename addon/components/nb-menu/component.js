@@ -28,7 +28,7 @@ export default Ember.Component.extend({
     $(this.get('element')).removeClass('show');
     this.$().off("keyup");
     this.$().off("keydown");
-    $(window).off('resize',this.resize);
+    $(window).off('resize', this.resize);
   }
   ,
 
@@ -58,9 +58,9 @@ export default Ember.Component.extend({
 
         $(self.get('element')).addClass('expand-' + side);
 
-         options = {
+        options = {
           element: self.get('element'),
-          target:self.get('tether'),
+          target: self.get('tether'),
           attachment: 'top ' + side,
           targetAttachment: 'top ' + side,
           //    offset: side ==="right" ? "0 "+width+"px" :"0 0",
@@ -70,9 +70,9 @@ export default Ember.Component.extend({
           },
           constraints: [
             {
-              to: [10,10,$('body').width() -10,$('body').height()-10],   //''scrollParent',
+              to: [ 5, 5, $('body').width() - 5, $('body').height() - 5 ],   //''scrollParent',
               attachment: 'both',
-              pin:true
+              pin: true
             }
           ]
         };
@@ -103,8 +103,8 @@ export default Ember.Component.extend({
     } ], function () {});
 
 
-    this.resize = function(){
-      if(!self.get('isDestroying')) {
+    this.resize = function () {
+      if ( !self.get('isDestroying') ) {
 
         let width = self.$().outerWidth();
         let h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -118,7 +118,7 @@ export default Ember.Component.extend({
         self.get('parentView.tetherObject').setOptions(_.extend(options, {
           constraints: [
             {
-              to: [ 10, 10, $('body').width() - 10, $('body').height() - 10 ],   //''scrollParent',
+              to: [ 5, 5, $('body').width() - 5, $('body').height() -5 ],   //''scrollParent',
               attachment: 'both',
               pin: true
             }
@@ -126,9 +126,7 @@ export default Ember.Component.extend({
         }));
       }
     };
-    $(window).on('resize',this.resize);
-
-
+    $(window).on('resize', this.resize);
 
 
     var currentElement = this.$('.item:first').get(0);
