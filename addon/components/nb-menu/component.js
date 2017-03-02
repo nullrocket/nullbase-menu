@@ -70,7 +70,7 @@ export default Ember.Component.extend({
           },
           constraints: [
             {
-              to: [ 5, 5, $('body').width() - 5, $('body').height() - 5 ],   //''scrollParent',
+              to: [ 2, 2, $('body').width() - 2, $('body').height() -  ],   //''scrollParent',
               attachment: 'both',
               pin: true
             }
@@ -118,7 +118,7 @@ export default Ember.Component.extend({
         self.get('parentView.tetherObject').setOptions(_.extend(options, {
           constraints: [
             {
-              to: [ 5, 5, $('body').width() - 5, $('body').height() -5 ],   //''scrollParent',
+              to: [ 2, 2, $('body').width() - 2, $('body').height() -2 ],   //''scrollParent',
               attachment: 'both',
               pin: true
             }
