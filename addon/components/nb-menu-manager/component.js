@@ -67,9 +67,9 @@ export default Ember.Component.extend(InboundAction, {
           //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
           var menuToRemove = _.find(this.get('menus'), function ( menu ) {
 
-            return menu.tether === tether;
+            return menu.tether === tether.element;
           });
-     //     $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
+          $(tether.element).appendTo('.menu-manager .nb-menu-backdrop');
 
        //   aMenu.get('tetherObject').destroy();
           //  aMenu.get('tether').focus();
