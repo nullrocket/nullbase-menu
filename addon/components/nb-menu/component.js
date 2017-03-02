@@ -70,7 +70,7 @@ export default Ember.Component.extend({
           },
           constraints: [
             {
-              to: [ 2, 2, $('body').width() - 2, $('body').height() -  ],   //''scrollParent',
+              to: [ 2, 2, $('body').width() - 2, $('body').height() - 2  ],   //''scrollParent',
               attachment: 'both',
               pin: true
             }
