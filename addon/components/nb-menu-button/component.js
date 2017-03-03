@@ -26,7 +26,7 @@ export default NbButton.extend({
     }
   },
   willDestroyElement(){
-    this.get('menuManager.actionHandler').send('removeByTether', this.get('tetherObject'));
+    this.get('menuManager.actionHandler').send('remove', this.get('childMenu'));
     this._super(...arguments);
 
   }

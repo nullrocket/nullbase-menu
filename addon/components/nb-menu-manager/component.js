@@ -82,6 +82,7 @@ export default Ember.Component.extend(InboundAction, {
             var self = this;
             var uniqId = uniqID.get("menu");
             var type = _.isUndefined(args) ? "not-set" : _.has(args, "type") ? args.type : 'not-set';
+            var owner = _.isUndefined(args)?'not-set':_.has(args,"owner")? args.owner:'not-set';
 
             this.get('menus').pushObject({ name: menuComponent, menuID: uniqId, tether: args.tether, type: type, args: args });
             let menu = null;
@@ -93,6 +94,9 @@ export default Ember.Component.extend(InboundAction, {
                 });
 
                 if ( menu ) {
+                  if(owner){
+                    owner.set('childMenu',menu);
+                  }
                     setTimeout(function () {
                         menu.send('show', args);
                     }, 0)
