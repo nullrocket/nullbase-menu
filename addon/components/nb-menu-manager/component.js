@@ -50,17 +50,19 @@ export default Ember.Component.extend(InboundAction, {
   /* reduxStore:Ember.inject.service(),*/
   actions: {
     remove: function ( aMenu ) {
-      //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
-      var menuToRemove = _.find(this.get('menus'), function ( menu ) {
+      if(aMenu) {
+        //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
+        var menuToRemove = _.find(this.get('menus'), function ( menu ) {
 
-        return menu.menuID === aMenu.get('menuID');
-      });
-      $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
+          return menu.menuID === aMenu.get('menuID');
+        });
 
-      aMenu.get('tetherObject').destroy();
-      //  aMenu.get('tether').focus();
-      this.get('menus').removeObject(menuToRemove);
+        $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
 
+        aMenu.get('tetherObject').destroy();
+        //  aMenu.get('tether').focus();
+        this.get('menus').removeObject(menuToRemove);
+      }
     },
 
 
