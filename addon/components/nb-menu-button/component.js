@@ -4,12 +4,14 @@ import NbButton from 'nullbase-button/components/nb-button/component';
 import _ from "npm:lodash";
 export default NbButton.extend({
   menu:'',
+  childMenu:null,
 
   actions:{
     tap(){
 
         Ember.run.next(this,function() {
             var self = this;
+
             var mergedArgs = Ember.Object.create(
               //  { doStuff: "remove", bob: "boo", tether: this.get('element'), alert: getOwner(this).lookup('route-action:helpers').compute([ 'alert' ]) }
                 _.merge(this.get('args')?this.get('args'):{},{tether: this.get('element'),owner:this })

@@ -4,95 +4,96 @@ import _ from "npm:lodash";
 
 var ActionProxy = Ember.Object.extend(Ember.ActionHandler);
 var uniqID = {
-    counter: 0,
-    get: function ( prefix ) {
-        if ( !prefix ) {
-            prefix = "uniqid";
-        }
-        var id = prefix + "" + uniqID.counter++;
-        if ( jQuery("#" + id).length === 0 ) {
-            return id;
-        }
-        else {
-            return uniqID.get();
-        }
-
+  counter: 0,
+  get: function ( prefix ) {
+    if ( !prefix ) {
+      prefix = "uniqid";
     }
+    var id = prefix + "" + uniqID.counter++;
+    if ( jQuery("#" + id).length === 0 ) {
+      return id;
+    }
+    else {
+      return uniqID.get();
+    }
+
+  }
 };
 var InboundAction = Ember.Mixin.create({
-    init: function () {
-        this._super(...arguments);
-        var proxy = ActionProxy.create({
-            target: this
-        });
-        this.set('actionReceiver.actionHandler', proxy);
-    }
+  init: function () {
+    this._super(...arguments);
+    var proxy = ActionProxy.create({
+      target: this
+    });
+    this.set('actionReceiver.actionHandler', proxy);
+  }
 
 });
 
 
 export default Ember.Component.extend(InboundAction, {
-    layout,
+  layout,
 
-    init: function () {
+  init: function () {
 
-        this.set('actionReceiver', this.get('menuManager'));
+    this.set('actionReceiver', this.get('menuManager'));
 
-        this._super(...arguments);
+    this._super(...arguments);
 
+
+  },
+
+  menus: Ember.A([]),
+  menuInstances: Ember.A([]),
+  classNames: [ 'menu-manager' ],
+
+  /* reduxStore:Ember.inject.service(),*/
+  actions: {
+    remove: function ( aMenu ) {
+      //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
+      var menuToRemove = _.find(this.get('menus'), function ( menu ) {
+
+        return menu.menuID === aMenu.get('menuID');
+      });
+      $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
+
+      aMenu.get('tetherObject').destroy();
+      //  aMenu.get('tether').focus();
+      this.get('menus').removeObject(menuToRemove);
 
     },
 
-    menus: Ember.A([]),
-    menuInstances: Ember.A([]),
-    classNames: [ 'menu-manager' ],
 
-    /* reduxStore:Ember.inject.service(),*/
-    actions: {
-        remove: function ( aMenu ) {
-            //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
-            var menuToRemove = _.find(this.get('menus'), function ( menu ) {
+    show: function ( menuComponent, args ) {
 
-                return menu.menuID === aMenu.get('menuID');
-            });
-            $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
+      // this.get('reduxStore').dispatch({type:'BLOCK_TRANSITIONS'});
+      var self = this;
+      var uniqId = uniqID.get("menu");
+      var type = _.isUndefined(args) ? "not-set" : _.has(args, "type") ? args.type : 'not-set';
+      var owner = _.isUndefined(args) ? null : _.has(args, "owner") ? args.owner : null;
 
-            aMenu.get('tetherObject').destroy();
-          //  aMenu.get('tether').focus();
-            this.get('menus').removeObject(menuToRemove);
+      this.get('menus').pushObject({ name: menuComponent, menuID: uniqId, tether: args.tether, type: type, args: args });
+      let menu = null;
 
-        },
+      Ember.run.scheduleOnce('afterRender', function () {
+        menu = _.find(self.get('menuInstances'), function ( menu ) {
 
+          return menu.get('menuID') === uniqId;
+        });
 
-        show: function ( menuComponent, args ) {
+        if ( menu ) {
+          if ( owner ) {
 
-            // this.get('reduxStore').dispatch({type:'BLOCK_TRANSITIONS'});
-            var self = this;
-            var uniqId = uniqID.get("menu");
-            var type = _.isUndefined(args) ? "not-set" : _.has(args, "type") ? args.type : 'not-set';
-            var owner = _.isUndefined(args)?null:_.has(args,"owner")? args.owner:null;
-
-            this.get('menus').pushObject({ name: menuComponent, menuID: uniqId, tether: args.tether, type: type, args: args });
-            let menu = null;
-
-            Ember.run.scheduleOnce('afterRender', function () {
-                 menu = _.find(self.get('menuInstances'), function ( menu ) {
-
-                    return menu.get('menuID') === uniqId;
-                });
-
-                if ( menu ) {
-                  if(owner){
-                    owner.set('childMenu',menu);
-                  }
-                    setTimeout(function () {
-                        menu.send('show', args);
-                    }, 0)
-
-                }
-            });
+            owner.set('childMenu', menu);
+          }
+          setTimeout(function () {
+            menu.send('show', args);
+          }, 0)
 
         }
+      });
+
     }
+  }
 
 });
