@@ -63,26 +63,14 @@ export default Ember.Component.extend(InboundAction, {
 
         },
 
-        removeByTether(tether){
-          //     this.get('reduxStore').dispatch({type:'ALLOW_TRANSITIONS'});
-          var menuToRemove = _.find(this.get('menus'), function ( menu ) {
 
-            return menu.tether === tether.element;
-          });
-          $(tether.element).appendTo('.menu-manager .nb-menu-backdrop');
-
-       //   aMenu.get('tetherObject').destroy();
-          //  aMenu.get('tether').focus();
-          this.get('menus').removeObject(menuToRemove);
-
-        },
         show: function ( menuComponent, args ) {
 
             // this.get('reduxStore').dispatch({type:'BLOCK_TRANSITIONS'});
             var self = this;
             var uniqId = uniqID.get("menu");
             var type = _.isUndefined(args) ? "not-set" : _.has(args, "type") ? args.type : 'not-set';
-            var owner = _.isUndefined(args)?'not-set':_.has(args,"owner")? args.owner:'not-set';
+            var owner = _.isUndefined(args)?null:_.has(args,"owner")? args.owner:null;
 
             this.get('menus').pushObject({ name: menuComponent, menuID: uniqId, tether: args.tether, type: type, args: args });
             let menu = null;
