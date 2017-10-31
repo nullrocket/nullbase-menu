@@ -58,11 +58,13 @@ export default Ember.Component.extend(InboundAction, {
           return menu.menuID === aMenu.get('menuID');
         });
         console.log('element to move back to the menu manager',aMenu.get('tetherObject').element);
+        let elemref = aMenu.get('tetherObject').element;
         $(aMenu.get('tetherObject').element).appendTo('.menu-manager .nb-menu-backdrop');
 
         aMenu.get('tetherObject').destroy();
         //  aMenu.get('tether').focus();
         this.get('menus').removeObject(menuToRemove);
+        $(elemref).remove();
       }
     },
 
