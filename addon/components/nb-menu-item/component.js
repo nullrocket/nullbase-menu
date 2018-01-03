@@ -13,6 +13,7 @@ export default Ember.Component.extend({
   hover: false,
   focused: false,
   icon: "",
+  useNativeClick:false,
   actions: {
     tap(){
       if(!this.get('disabled')) {
@@ -54,7 +55,33 @@ export default Ember.Component.extend({
         self.send('tap');
 
     };
-    this.get("gestures").addEventListener(this.get("element"), 'tap', this._tap);
+    this._touchstart = function ( event ) {
+      if ( !self.get('disabled')  ) {
+        event.preventDefault();
+        event.stopPropagation();
+        self.send('tap', event);
+      }
+    };
+    this._click = function ( event ) {
+      if ( !self.get('disabled') ) {
+        event.preventDefault();
+        event.stopPropagation();
+        self.send('tap', event);
+      }
+    };
+
+    if ( self.get('useNativeClick') ) {
+
+      element.addEventListener('click', this._click);
+      element.addEventListener('touchstart', this._touchstart);
+    }
+    else {
+      gestures.addEventListener(element, 'tap', this._tap);
+
+    }
+
+
+
 
 
     this.$().on('focusin', function () {
