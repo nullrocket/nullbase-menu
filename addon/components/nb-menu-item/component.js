@@ -34,6 +34,8 @@ export default Ember.Component.extend({
   },
   didInsertElement(){
     let self = this;
+    let gestures = this.get("gestures");
+    let element = this.get('element');
     this._down = function ( inEvent ) {
       inEvent.preventDefault();
       inEvent.stopImmediatePropagation();
