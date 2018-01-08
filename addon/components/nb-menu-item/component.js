@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     let element = this.get('element');
     this._down = function ( inEvent ) {
       inEvent.preventDefault();
-      inEvent.stopImmediatePropagation();
+   //   inEvent.stopImmediatePropagation();
       //    $element.addClass('hover');
 
     };
