@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     let element = this.get('element');
     this._down = function ( inEvent ) {
       inEvent.preventDefault();
-   //   inEvent.stopImmediatePropagation();
+     inEvent.stopImmediatePropagation();
       //    $element.addClass('hover');
 
     };
@@ -51,7 +51,7 @@ export default Ember.Component.extend({
       self.set('hover', false);
     });
     this._tap = function ( event ) {
-
+    console.log('tapevent happened')
         event.preventDefault();
         event.stopPropagation();
         self.send('tap');
@@ -65,6 +65,7 @@ export default Ember.Component.extend({
       }
     };
     this._click = function ( event ) {
+      console.log('nativeClickHappened');
       if ( !self.get('disabled') ) {
         event.preventDefault();
         event.stopPropagation();
