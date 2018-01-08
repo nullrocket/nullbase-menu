@@ -42,7 +42,7 @@ export default Ember.Component.extend({
       //    $element.addClass('hover');
 
     };
-    this.get("gestures").addEventListener(this.get("element"), 'down', this._down);
+
 
     this.$().on('mouseenter', function () {
       self.set('hover', true);
@@ -79,6 +79,7 @@ export default Ember.Component.extend({
       element.addEventListener('touchstart', this._touchstart);
     }
     else {
+      this.get("gestures").addEventListener(this.get("element"), 'down', this._down);
       gestures.addEventListener(element, 'tap', this._tap);
 
     }
