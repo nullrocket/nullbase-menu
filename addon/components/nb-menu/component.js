@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   didInsertElement()
   {
     this._down = function ( e ) {
-
+    console.log('this down happened instead')
 
     };
 

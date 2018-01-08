@@ -58,6 +58,7 @@ export default Ember.Component.extend({
 
     };
     this._touchstart = function ( event ) {
+      console.log('nativeTouchStartHappened');
       if ( !self.get('disabled')  ) {
         event.preventDefault();
         event.stopPropagation();
