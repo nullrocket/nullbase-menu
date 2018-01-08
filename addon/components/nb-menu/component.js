@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
     };
 
-    this.get('gestures').addEventListener(this.get("element"), "down", this._down);
+  //  this.get('gestures').addEventListener(this.get("element"), "down", this._down);
     this._super(...arguments);
     let self = this;
     $(self.get('element')).addClass('pre-show');
