@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     let element = this.get('element');
     this._down = function ( inEvent ) {
       inEvent.preventDefault();
-     inEvent.stopPropagation();
+      inEvent.stopPropagation();
       //    $element.addClass('hover');
 
     };
@@ -51,14 +51,14 @@ export default Ember.Component.extend({
       self.set('hover', false);
     });
     this._tap = function ( event ) {
-    console.log('tapevent happened')
+
         event.preventDefault();
         event.stopPropagation();
         self.send('tap');
 
     };
     this._touchstart = function ( event ) {
-      console.log('nativeTouchStartHappened');
+
       if ( !self.get('disabled')  ) {
         event.preventDefault();
         event.stopPropagation();
@@ -66,7 +66,7 @@ export default Ember.Component.extend({
       }
     };
     this._click = function ( event ) {
-      console.log('nativeClickHappened');
+
       if ( !self.get('disabled') ) {
         event.preventDefault();
         event.stopPropagation();
@@ -75,9 +75,8 @@ export default Ember.Component.extend({
     };
 
     if ( self.get('useNativeClick') ) {
-
       element.addEventListener('click', this._click);
-      element.addEventListener('touchstart', this._touchstart);
+      element.addEventListener('touchend', this._touchstart);
     }
     else {
 
